@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UserMenu from './UserMenu';
 
+
 export default function Cabinet() {
   const [user, setUser] = useState({
     username: '',
@@ -111,7 +112,7 @@ export default function Cabinet() {
               <input
                 type='text'
                 className='form-control'
-                placeholder='Введите номер телефона'            name='phone'
+                placeholder='Введите номер телефона'name='phone'
                 value={user.phone}
                 onChange={handleChange}
               />

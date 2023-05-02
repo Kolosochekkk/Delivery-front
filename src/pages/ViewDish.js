@@ -67,12 +67,14 @@ export default function ViewDish() {
               <div className="text-center">
                 <img src={`http://localhost:8080${dish.photosImagePath}`} className="card-img-top" alt="..." />
               </div>
+              
               <div className="card-body">
                 <h5 className="card-title">{dish.name}</h5>
                 <p className="card-text">{dish.price} руб.</p>
                 <input type="number" min="1" value={number} onChange={(event) => setQuantity(event.target.value)} style={{ width: `${(number.toString().length * 50) + 10}px`, marginRight: '55px', marginLeft: '55px', marginBottom: '10px' }} size={number.toString().length} />
                 <button className="btn btn-primary" onClick={() => handleAddToCart(dish.id)}>Добавить в корзину</button>
               </div>
+              
             </div>
           </div>
         ))}
