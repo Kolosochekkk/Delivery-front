@@ -1,87 +1,11 @@
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
-import Navbar from './layout/Navbar';
-
-import Home from './pages/Home';
-import Authorization from './pages/Authorization';
-import UserHome from './pages/UserHome';
-import Restaurant from './pages/Restaurant';
-import Users from './pages/Users';
-import Dishes from './pages/Dishes';
-import ViewDish from './pages/ViewDish';
-import Cart from './pages/Cart';
-import Cabinet from './pages/Cabinet';
-import Promocode from './pages/Promocode';
-
-import AddPromocode from './promocode/AddPromocode';
-import EditPromocode from './promocode/EditPromocode';
-
-import AddUser from './users/AddUser';
-import EditUser from './users/EditUser';
-import ViewUser from "./users/ViewUser";
-import Register from './users/Register.js';
-
-import AddRestaurant from './restaurans/AddRestaurant.js';
-import EditRestaurant from './restaurans/EditRestaurant';
-
-import AddDish from './dishes/AddDish';
-import EditDish from './dishes/EditDish';
-
-
-
-function App() {
-  return (
-    <div className="App">
-      
-      <Router>
-      <Navbar />
-      <Routes>
-      <Route exact path="/" element={<Authorization/>}/>
-      <Route exact path="/register" element={<Register />} />
-
-      <Route exact path="/home" element={<Home/>}/>
-      <Route exact path="/userHome" element={<UserHome/>}/> 
-
-      <Route exact path="/cart" element={<Cart/>}/>
-      <Route exact path="/cabinet" element={<Cabinet/>}/>
-
-      <Route exact path="/restaurants" element={<Restaurant/>}/> 
-      <Route exact path="/addrestaurant" element={<AddRestaurant />} />
-      <Route exact path="/editrestaurant/:id" element={<EditRestaurant />} />
-
-      <Route exact path="/dishes" element={<Dishes/>}/> 
-      <Route exact path="/adddish" element={<AddDish/>}/>
-      <Route exact path="/editdish/:id" element={<EditDish/>}/>
-      <Route exact path="/viewdish/:id" element={<ViewDish/>}/>
-
-      <Route exact path="/addUser" element={<AddUser/>}/>
-      <Route exact path="/editUser/:id" element={<EditUser/>}/>
-      <Route exact path="/viewuser/:id" element={<ViewUser />} />
-      <Route exact path="/users" element={<Users />} />
-      
-      <Route exact path="/promocode" element={<Promocode/>}/> 
-      <Route exact path="/addpromocode" element={<AddPromocode/>}/>
-      <Route exact path="/editpromocode/:id" element={<EditPromocode/>}/>
-        
-      </Routes>
-      </Router>
-    </div>
-  );
-}
-
-export default App;
-
-
-/*import axios from 'axios';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 
 export default function AddDish() {
   const navigate = useNavigate();
   const [dish, setDishes] = useState({
-    restaurantId: 0,
+    
     name: '',
     price: 0
     
@@ -103,6 +27,7 @@ export default function AddDish() {
 
   //formData.append("photos", e.target.photos.files[0]);
   const onSubmit = async (e) => {
+    console.log(selectedRestaurant);
     e.preventDefault();
   
     const formData = new FormData();
@@ -111,7 +36,7 @@ export default function AddDish() {
       type: 'application/json'
     }));
   
-    await axios.post(`http://localhost:8080/restaurant/${selectedRestaurant}/dish`, formData, {
+    await axios.post(`http://localhost:8080/restaurant/${selectedRestaurant}`, formData, {
 
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -197,4 +122,3 @@ export default function AddDish() {
 </div>
 );
 }
-*/

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, {useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export default function AddUser() {
+export default function Register() {
 
     let navigate=useNavigate()
 
@@ -17,7 +17,7 @@ export default function AddUser() {
         role: "USER"
     })
 
-    const{username, password, name,surname, phone, address, email, role}=user
+    const{username, password, name, surname, phone, address, email}=user
 
     const onInputChange=(e)=>{
         setUser({ ...user,[e.target.name]: e.target.value});
@@ -26,14 +26,9 @@ export default function AddUser() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-       
-        if (user.role === "ADMIN") {
-          user.roles = ["ADMIN"];
-        } else {
-          user.roles = ["USER"];
-        }
+        user.roles = ["USER"];
         await axios.post("http://localhost:8080/user", user);
-        navigate("/users");
+        navigate("/userHome");
     };
 
   return (
@@ -41,7 +36,7 @@ export default function AddUser() {
         <div className='row'>
             <div className='col-md-6 offset-md-3 border rounded p-2 mt-2'>
 
-            <h4 className='text-center m-4'>Добавить пользователя</h4>
+            <h4 className='text-center m-4'>Регистрация</h4>
             <form onSubmit={(e) => onSubmit(e)}>
             <div className='mb-3'>
                 <label htmlFor='Username' className='form-label'>
@@ -57,10 +52,10 @@ export default function AddUser() {
                 />
             </div><div className='mb-3'>
                 <label htmlFor='Password' className='form-label'>
-                Пароль
+                    Пароль
                 </label>
                 <input
-                type={"text"}
+                type={"password"}
                 className="form-control"
                 placeholder='Введите пароль'
                 name='password'
@@ -70,7 +65,7 @@ export default function AddUser() {
             </div>
             <div className='mb-3'>
                 <label htmlFor='Name' className='form-label'>
-                Имя
+                    Имя
                 </label>
                 <input
                 type={"text"}
@@ -125,7 +120,7 @@ export default function AddUser() {
                 Адрес электронной почты
                 </label>
                 <input
-                type={"text"}
+                type={"email"}
                 className="form-control"
                 placeholder='Введите адрес электронной почты'
                 name='email'
@@ -133,20 +128,11 @@ export default function AddUser() {
                 onChange={(e)=>onInputChange(e)}
                 />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="Role" className="form-label">Роль</label>
-              <select className="form-control" name="role" value={role} onChange={(e) => onInputChange(e)}>
-                <option value="USER">Пользователь</option>
-                <option value="ADMIN">Администратор</option>
-              </select>
-            </div>
-
-            <button type='submit' className='btn btn-outline-primary'>Добавить</button>
-            <Link className='btn btn-outline-danger mx-2' to="/users">Отмена</Link>
-            </form>
+            <button type='submit' className='btn btn-outline-primary'>Зарегистрироваться</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-  )
-}
+      )
+    }
+

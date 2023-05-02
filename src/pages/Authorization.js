@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
+import "../styles/Back.css";
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -13,7 +14,10 @@ function Login() {
     axios
       .post('http://localhost:8080/loginuser', { username, password })
       .then((response) => {
-        if (response.data.roles.includes('ADMIN')) {
+        if (response.data.roles.includes('MANAGER')) {
+          localStorage.setItem('user', JSON.stringify(response.data));
+          navigate('/users');
+        } else if (response.data.roles.includes('ADMIN')) {
           localStorage.setItem('user', JSON.stringify(response.data));
           navigate('/home');
         } else {
@@ -27,6 +31,7 @@ function Login() {
   };
 
   return (
+    <div className="my-background">
     <form onSubmit={handleSubmit}>
       <div
         className="container d-flex justify-content-center align-items-center"
@@ -64,9 +69,12 @@ function Login() {
           <button type="submit" className="btn btn-outline-dark w-100 mt-4">
             Войти
           </button>
+          <Link className='btn mx-2' to="/register" style={{ color: 'blue' }}>Нет аккаунта? Зарегистрируйся!</Link>
+
         </div>
       </div>
     </form>
+    </div>
   );
 }
 

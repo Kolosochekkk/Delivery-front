@@ -5,8 +5,11 @@ import { Link, useParams } from "react-router-dom";
 export default function ViewUser() {
   const [user, setUser] = useState({
     name: "",
+    surname: "",
     username: "",
     email: "",
+    phone: "",
+    address: ""
   });
 
   const { id } = useParams();
@@ -28,25 +31,37 @@ export default function ViewUser() {
 
           <div className="card">
             <div className="card-header">
-              Details of user id : {user.id}
+              Детали о пользователе : {user.name}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <b>Name:</b>
+                  <b>Имя: </b>
                   {user.name}
                 </li>
                 <li className="list-group-item">
-                  <b>UserName:</b>
+                  <b>Фамилия: </b>
+                  {user.surname}
+                </li>
+                <li className="list-group-item">
+                  <b>Логин: </b>
                   {user.username}
                 </li>
                 <li className="list-group-item">
-                  <b>Email:</b>
+                  <b>Номер телефона: </b>
+                  {user.phone}
+                </li>
+                <li className="list-group-item">
+                  <b>Адрес электронной почты: </b>
                   {user.email}
+                </li>
+                <li className="list-group-item">
+                  <b>Адрес: </b>
+                  {user.address}
                 </li>
               </ul>
             </div>
           </div>
-          <Link className="btn btn-primary my-2" to={"/home"}>
-            Back to Home
+          <Link className="btn btn-primary my-2" to={"/users"}>
+            Назад
           </Link>
         </div>
       </div>
