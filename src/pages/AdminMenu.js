@@ -16,6 +16,12 @@ export default function AdminMenu() {
           <li>
             <Link to="/promocode">Промокоды</Link>
           </li>
+          <li>
+            <Link to="/orders">Заказы</Link>
+          </li>
+          <li>
+            <Link to="/diagrams">Диаграммы</Link>
+          </li>
         </ul>
       </nav>
     </header>

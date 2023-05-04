@@ -16,6 +16,9 @@ export default function UserMenu() {
           <li>
             <Link to="/cabinet">Личный кабинет</Link>
           </li>
+          <li>
+            <Link to="/userorder">Заказы</Link>
+          </li>
         </ul>
       </nav>
     </header>

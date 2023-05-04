@@ -14,6 +14,9 @@ import ViewDish from './pages/ViewDish';
 import Cart from './pages/Cart';
 import Cabinet from './pages/Cabinet';
 import Promocode from './pages/Promocode';
+import Orders from './pages/Orders';
+import UserOrder from './pages/UserOrder';
+import Diagrams from './pages/Diagrams';
 
 
 import AddPromocode from './promocode/AddPromocode';
@@ -44,6 +47,11 @@ function App() {
 
       <Route exact path="/home" element={<Home/>}/>
       <Route exact path="/userHome" element={<UserHome/>}/> 
+
+      <Route exact path="/diagrams" element={<Diagrams/>}/> 
+
+      <Route exact path="/orders" element={<Orders/>}/>
+      <Route exact path="/userorder" element={<UserOrder/>}/> 
 
       <Route exact path="/cart" element={<Cart/>}/>
       <Route exact path="/cabinet" element={<Cabinet/>}/>

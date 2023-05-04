@@ -38,6 +38,7 @@ export default function Dishes() {
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Ресторан</th>
                 <th scope="col">Название</th>
                 <th scope="col">Стоимость</th>
                 <th scope="col">Фото</th>
@@ -49,6 +50,7 @@ export default function Dishes() {
                 dishes.map((dish,index)=>(
                 <tr>
                   <th scope="row" key={index}>{index+1}</th>
+                  <td>{dish.restaurant.name}</td>
                   <td>{dish.name}</td>
                   <td>{dish.price}</td>
                   <td><img src={`http://localhost:8080${dish.photosImagePath}`} alt="нет" height="50" /></td>
